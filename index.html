@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Logics Labs - AI Coding Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="nav-left">
+            <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="20" stroke="#3b82f6" stroke-width="4" fill="none"/>
+                        <path d="M16 16 L32 24 L16 32 Z" fill="#3b82f6"/>
+                        <circle cx="24" cy="24" r="8" fill="#60a5fa"/>
+                    </svg>
+                </div>
+                <span>Code Logics Labs</span>
+            </div>
+        </div>
+
+        <nav class="nav-center">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#learn" class="nav-link">Learn</a>
+            <a href="#business" class="nav-link">Business</a>
+            <a href="#pricing" class="nav-link">Pricing</a>
+        </nav>
+
+        <div class="nav-right">
+            <button class="auth-btn login-btn" id="loginBtn">
+                <i class="fas fa-sign-in-alt"></i> Log in
+            </button>
+            <button class="auth-btn signup-btn" id="signupBtn">
+                <i class="fas fa-user-plus"></i> Sign up for free
+            </button>
+        </div>
+    </header>
+
+    <div class="chat-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-history"></i> Chat History</h3>
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="fas fa-plus"></i> New Chat
+                </button>
+            </div>
+            <div class="chat-history" id="chatHistory">
+                <div class="empty-state">
+                    <i class="fas fa-comments"></i>
+                    <p>No chats yet. Start coding!</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="main-chat">
+            <div class="welcome-screen" id="welcomeScreen">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">Welcome to Code Logics Labs</h1>
+                    <p class="welcome-subtitle">Your AI-powered coding companion. Solve problems, learn concepts, and build faster.</p>
+                    <div class="recommendations">
+                        <h3>Try these coding questions:</h3>
+                        <div class="rec-buttons">
+                            <button class="rec-btn" data-prompt="Explain quicksort algorithm with JavaScript code">
+                                <i class="fas fa-sort-amount-down"></i> Quicksort in JS
+                            </button>
+                            <button class="rec-btn" data-prompt="Debug this React useEffect infinite loop">
+                                <i class="fas fa-bug"></i> Fix React useEffect
+                            </button>
+                            <button class="rec-btn" data-prompt="Create REST API with Node.js and Express">
+                                <i class="fas fa-server"></i> Node.js REST API
+                            </button>
+                            <button class="rec-btn" data-prompt="Optimize this Python list comprehension">
+                                <i class="fas fa-rocket"></i> Python optimization
+                            </button>
+                            <button class="rec-btn" data-prompt="CSS Grid vs Flexbox comparison with examples">
+                                <i class="fas fa-table-cells"></i> CSS Grid vs Flexbox
+                            </button>
+                            <button class="rec-btn" data-prompt="Implement binary search tree in C++">
+                                <i class="fas fa-sitemap"></i> Binary Search Tree C++
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-messages" id="chatMessages"></div>
+            
+            <div class="input-area">
+                <div class="input-container">
+                    <textarea class="input-field" id="messageInput" placeholder="Ask your coding question here... (e.g., 'Implement merge sort in Python')" rows="1"></textarea>
+                    <button class="send-btn" id="sendBtn" disabled>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="disclaimer-footer">
+        <p>
+            By messaging <strong>Code Logics Labs</strong>, you agree to our 
+            <a href="#" target="_blank">Terms</a> 
+            and have read our 
+            <a href="#" target="_blank">Privacy Policy</a>. 
+            See <a href="#" target="_blank">Cookie Preferences</a>.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
