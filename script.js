@@ -14,6 +14,11 @@ let currentChatId = null;
 let isTyping = false;
 let typingTimer;
 
+// API Configuration
+const API_BASE_URL = window.location.hostname === 'localhost' 
+    ? 'http://localhost:3000' 
+    : 'https://code-logics-labs-backend.onrender.com';
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     renderChatHistory();
@@ -93,7 +98,7 @@ function sendMessage() {
     showTypingIndicator();
 
     // Call your backend API
-fetch('http://localhost:3000/api/code/generate', {
+fetch(`${API_BASE_URL}/api/code/generate`, {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json',
@@ -211,7 +216,13 @@ function appendMessage(text, sender) {
 
     const content = document.createElement('div');
     content.className = 'message-content';
-    content.innerHTML = text.replace(/\n/g, '<br>');
+    
+    // Format message properly
+    if (sender === 'ai') {
+        content.innerHTML = formatAIResponse(text);
+    } else {
+        content.innerHTML = text.replace(/\n/g, '<br>');
+    }
 
     if (sender === 'user') {
         messageDiv.appendChild(content);
@@ -355,43 +366,6 @@ function setupAuthButtons() {
     document.getElementById('loginBtn').addEventListener('click', () => {
         // Replace with your auth modal/API
         console.log('Login clicked - connect backend');
-    });
-}
-// Add this function to your script.js to replace the current appendMessage function
-
-function appendMessage(text, sender) {
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${sender}`;
-    
-    const avatar = document.createElement('div');
-    avatar.className = `avatar ${sender}`;
-    avatar.innerHTML = sender === 'user' ? 'You' : '<i class="fas fa-robot"></i>';
-
-    const content = document.createElement('div');
-    content.className = 'message-content';
-    
-    // Format message properly
-    if (sender === 'ai') {
-        content.innerHTML = formatAIResponse(text);
-    } else {
-        content.innerHTML = text.replace(/\n/g, '<br>');
-    }
-
-    if (sender === 'user') {
-        messageDiv.appendChild(content);
-        messageDiv.appendChild(avatar);
-    } else {
-        messageDiv.appendChild(avatar);
-        messageDiv.appendChild(content);
-    }
-
-    chatMessages.appendChild(messageDiv);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-    
-    // Animate in
-    requestAnimationFrame(() => {
-        messageDiv.style.animationDelay = '0.1s';
-        messageDiv.style.opacity = '1';
     });
 }
 
